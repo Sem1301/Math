@@ -18,8 +18,7 @@ def product_factors(factors: list) -> int:
 def prime_factor(n: int) -> list:
     """There is no optimization yet, so large number take a very long time to compute
     """
-    # if is_prime(n):
-    #     return [n, ]
+
     idx = 0
     i = PRIMES[idx]
     factors = []
