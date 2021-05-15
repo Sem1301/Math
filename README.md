@@ -1,6 +1,6 @@
 # Math project
 
-Trying out cool math stuff!
+Trying out cool math stuff
 
 
 * Primes
