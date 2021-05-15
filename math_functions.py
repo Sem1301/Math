@@ -1,3 +1,22 @@
+def gcd(a: int, b: int) -> int:
+    """"Greatest Common Denominator.
+    """
+    if a > b:
+        r = a % b
+        started = False
+        while r != 0:
+            started = True
+            r = a % b
+            a = b
+            b = r
+        if started:
+            return a
+        else:
+            return b
+    else:
+        raise ValueError('a must be greater than b')
+
+
 def product_list(numbers: list) -> int:
     total = 1
     for num in numbers:
