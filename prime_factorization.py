@@ -1,11 +1,13 @@
 import pickle
-import time
+import sys
 
 PRIMES = pickle.load(open("primes_1m.pickle", "rb"))
 
 
 def prime_factor(n: int) -> list:
-    """There is no optimization yet, so large number take a very long time to compute
+    """Prime factors.
+
+    Optimized with pre prepared primes list.
     """
     idx = 0
     i = PRIMES[idx]
@@ -23,46 +25,12 @@ def prime_factor(n: int) -> list:
     return factors
 
 
-def prime_factors_ivo(n):
-    """Returns all the prime factors of a positive integer
-    used in "opgave 22" of 2017
-    """
-    factors = []
-    idx = 0
-    d = PRIMES[idx]
-    while n > 1:
-        while n % d == 0:
-            factors.append(d)
-            n /= d
-        idx += 1
-        d = PRIMES[idx]
-        if d * d > n:
-            if n > 1:
-                factors.append(int(n))
-            break
-    return factors
-
-
 if __name__ == '__main__':
-    # print(prime_factor(int(input('input your integer value here: '))))
-
-    sem = []
-    ivo = []
-    for i in range(5000):
-        if i % 50 == 0:
-            print("Iteration:", i)
-
-        start = time.time()
-        for i in range(201, 5000, 3):
-            prime_factors_ivo(i)
-        ivo_time = time.time() - start
-        ivo.append(ivo_time)
-
-        start = time.time()
-        for i in range(201, 5000, 3):
-            prime_factor(i)
-        sem_time = time.time() - start
-        sem.append(sem_time)
-
-    print("Sem:", sum(sem) / len(sem))
-    print("Ivo:", sum(ivo) / len(ivo))
+    while True:
+        to_factor = input('input your integer value here: ')
+        if not to_factor:
+            sys.exit(0)
+        try:
+            print(prime_factor(int(to_factor)))
+        except IndexError:
+            print("Sorry the number you tried is too big.")
