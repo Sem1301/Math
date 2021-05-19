@@ -1,17 +1,18 @@
 
-OUTPUT = '''%-20s | %-20s | %-20s'''
+OUTPUT = '''%-20s | %-20s | %-20s | %-20s'''
 
 
 def gcd(a, b):
-    print(OUTPUT % ('a', 'b', 'a MOD b'))
-    print('-' * 80)
+    print(OUTPUT % ('a', 'b', 'a div b', 'a MOD b'))
+    print('-' * 120)
     if a > b:
         r = a % b
         started = False
         while r != 0:
             started = True
             r = a % b
-            print(OUTPUT % (a, b, r))
+            s = a // b
+            print(OUTPUT % (a, b, s, r))
             a = b
             b = r
         if started:

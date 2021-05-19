@@ -17,5 +17,5 @@ def wilson(i):
 
 
 if __name__ == '__main__':
-    for i in range(2, 100):
-        print(i, wilson(i))
+    for x in range(2, 100):
+        print(x, wilson(x))
