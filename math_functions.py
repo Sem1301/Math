@@ -41,25 +41,22 @@ def prime_factor(n: int) -> list:
     return factors
 
 
-def collatz(a, b):
-    """This collatz conjecture script shows the amount of steps needed,
+def collatz(value):
+    """TODO doc
+    This collatz conjecture script shows the amount of steps needed,
     for a certain interval of integers to get to 1: (integer(i), steps(s))
     It only works for positive integers {1, 2, 3, ...}
     """
-    ret = []
-    if a < 1:
-        a = 1
-    for i in range(a, b + 1):
-        y = 0
-        x = i
-        while i != 1:
-            y += 1
-            if i % 2 == 0:
-                i /= 2
-            else:
-                i = 3 * i + 1
-        ret.append((x, y))
-    return ret
+    steps = 0
+    i = value
+    while i != 1:
+        steps += 1
+        if i % 2 == 0:
+            i /= 2
+        else:
+            i = 3 * i + 1
+    return steps
+
 
 if __name__ == '__main__':
     print(prime_factor(int(input('input your integer value here: '))))
