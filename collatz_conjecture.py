@@ -19,7 +19,11 @@ def collatz(value):
     It only works for positive integers {1, 2, 3, ...}
     """
     i = value
-    while i != 1:
+    if i < 1:
+        raise ValueError("Positive integer please.")
+    if i == 1:
+        yield 0
+    while i > 1:
         if i % 2 == 0:
             i /= 2
         else:
@@ -35,7 +39,7 @@ def collatz_generator(start=1):
 
 
 def collatz_plotter():
-    for item in range(2, 100):
+    for item in range(1, 100):
         yas = []
         for idx, y in enumerate(collatz(item), start=1):
             yas.append(y)
@@ -45,12 +49,30 @@ def collatz_plotter():
         ax.plot(xas, yas)
 
         ax.set(xlabel='value', ylabel='steps',
-               title='Collatz')
+               title='Collatz: %s' % item)
         ax.grid()
 
         fig.savefig(os.path.join(COLLATZ_PATH, "collatz%s.png" % item))
         plt.close(fig)
         # plt.show()
+
+# def collatz_plotter2():
+#     for item in range(1, 100):
+#         yas = []
+#         for idx, y in enumerate(collatz(item), start=1):
+#             yas.append(y)
+#         xas = np.arange(1, len(yas) + 1, 1)
+#
+#         fig, ax = plt.subplots()
+#         ax.plot(xas, yas)
+#
+#         ax.set(xlabel='value', ylabel='steps',
+#                title='Collatz: %s' % item)
+#         ax.grid()
+#
+#         fig.savefig(os.path.join(COLLATZ_PATH, "collatz%s.png" % item))
+#         plt.close(fig)
+#         # plt.show()
 
 
 def max_steps():
