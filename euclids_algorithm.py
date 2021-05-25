@@ -1,7 +1,7 @@
 OUTPUT = '''%-20s | %-20s | %-20s | %-20s'''
 
 
-def gcd_linear(a, b):
+def gcd(a, b):
     print(OUTPUT % ('a', 'b', 'a div b', 'a MOD b'))
     print('-' * 180)
     if a > b:
@@ -45,7 +45,7 @@ def loop():
         if num_1 == 0 and num_2 == 0:
             running = False
             continue
-        gcd_linear(num_1, num_2)
+        gcd(num_1, num_2)
 
 
 if __name__ == '__main__':
